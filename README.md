@@ -125,6 +125,10 @@ In general, the response is formatted:
 [decode_json.py](./decode_json.py) will automatically extract and decode
 the value of `results` and print them to STDOUT.
 
+### parsing `dga` responses
+
+**TODO**: scripts to automatically decode second-level JSON.
+
 The format of `results` depends on the query `type`.
 
 At the moment, we're working only with the `dga` query type.
@@ -140,6 +144,18 @@ The format of the results is the following:
 `name` is the filename of the botnet activity list, which is useful for
 cross-referencing with the data owner.
 
-`data` is the base64-encoded file.
+`data` is the base64-encoded file. The timestamp in the `name`
+corresponds to the date the data was published and contains a 30-day
+rollup of activity seen.
 
-TODO: scripts to automatically decode second-level JSON.
+The IPDomainList data is a plaintext file formatted with
+`IP: domain1, domain2, ..., domainN` entries, separated by
+newlines.
+
+```
+10.0.0.1: a.example.com,b.example.com,c.example.com
+10.0.0.2: example.com,www.example.com
+```
+
+There are additional scripts to working with botnet activity lists not
+provided here.
