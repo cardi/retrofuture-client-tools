@@ -1,5 +1,13 @@
 # retrofuture-client-tools
 
+* [retrofuture-client-tools](#retrofuture-client-tools)
+   * [generate a TLS client certificate](#generate-a-tls-client-certificate)
+   * [sending requests](#sending-requests)
+      * [hello world](#hello-world)
+      * [dga botnet activity lists](#dga-botnet-activity-lists)
+   * [parsing responses](#parsing-responses)
+      * [parsing dga responses](#parsing-dga-responses)
+
 ## generate a TLS client certificate
 
 Retro-Future uses TLS client certificates for authentication and signing
@@ -127,7 +135,7 @@ the value of `results` and print them to STDOUT.
 
 ### parsing `dga` responses
 
-**TODO**: scripts to automatically decode second-level JSON.
+**Summary**: `cat output.json | ./decode_json.py | ./decode_json_dga.py`
 
 The format of `results` depends on the query `type`.
 
@@ -140,6 +148,10 @@ The format of the results is the following:
   "data": "MjAxNwo="
 }
 ```
+
+Another script [decode_json_dga.py](./decode_json_dga.py) will automatically
+extract and decode this "second layer" of results and save them (`data`) to a
+file (named `name`).
 
 `name` is the filename of the botnet activity list, which is useful for
 cross-referencing with the data owner.
