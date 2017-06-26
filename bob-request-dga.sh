@@ -1,5 +1,9 @@
 #!/bin/sh
 
+CLEINT=bob
+SERVER=127.0.0.1
+PORT=8000
+
 # for dga, a timestamp (that's currently ignored)
 QUERY_PAYLOAD="`date -Iseconds`"
 
@@ -17,6 +21,6 @@ curl \
   --insecure \
   --data   "$QUERY" \
   --header "Content-Type: application/json" \
-  --key    bob/bob.key.nopasswd \
-  --cert   bob/bob.crt \
-  https://127.0.0.1:8080/query
+  --key    $CLIENT/$CLIENT.key.nopasswd \
+  --cert   $CLIENT/$CLIENT.crt \
+  https://$SERVER:$PORT/query

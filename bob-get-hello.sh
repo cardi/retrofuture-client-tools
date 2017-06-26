@@ -1,6 +1,8 @@
 #!/bin/sh
 
 CLIENT=bob
+SERVER=127.0.0.1
+PORT=8000
 
 curl \
   -X GET \
@@ -9,4 +11,4 @@ curl \
   --insecure \
   --key    $CLIENT/$CLIENT.key.nopasswd \
   --cert   $CLIENT/$CLIENT.crt \
-  https://127.0.0.1:8080
+  https://$SERVER:$PORT
