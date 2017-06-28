@@ -5,7 +5,7 @@ SERVER=127.0.0.1
 PORT=8000
 
 # for dga, a timestamp (that's currently ignored)
-QUERY_PAYLOAD="`date -Iseconds`"
+QUERY_PAYLOAD="`date --rfc-3339=seconds`"
 
 QUERY='{
   "id"       : 1,
