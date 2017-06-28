@@ -1,5 +1,6 @@
 # retrofuture-client-tools
 
+Table of Contents:
 * [retrofuture-client-tools](#retrofuture-client-tools)
    * [generate a TLS client certificate](#generate-a-tls-client-certificate)
    * [sending requests](#sending-requests)
@@ -143,9 +144,17 @@ At the moment, we're working only with the `dga` query type.
 The format of the results is the following:
 
 ```json
-{
-  "name": "CnC_2017_05_31-sample-sample-IPDomainList",
-  "data": "MjAxNwo="
+{ "dga":
+    [
+        {
+          "name": "CnC_2017_05_31-sample-sample-IPDomainList",
+          "data": "MjAxNwo="
+        },
+        {
+          "name": "CnC_2017_05_31-sample2-sample2-IPDomainList",
+          "data": "MjAxNi45OTkK"
+        }
+    ]
 }
 ```
 

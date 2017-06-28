@@ -4,8 +4,13 @@
 # expected input json format:
 #     
 # {
-#     "name": "CnC_2017_00_00-example-example-IPDomainList",
-#     "data": "base64-encoded data of IP:domain pairs"
+#   "dga":
+#   [
+#     {"name": "CnC_2017_00_00-example-example-IPDomainList",
+#     "data": "base64-encoded data of IP:domain pairs"},
+#     {"name": "CnC_2017_00_00-example2-example2-IPDomainList",
+#     "data": "base64-encoded data of IP:domain pairs"}
+#   ]
 # }
 
 import json
@@ -20,11 +25,12 @@ jdata = jdata[ jdata.index('{') : ]
 # kind of annoying if we didn't format json properly
 data = json.loads(jdata.replace("\'", '"'))
 
-payload = data['data'].decode('base64')
-filename = data['name']
-
-with open(filename, 'w') as f:
-    f.write(payload)
-
-if f.closed:
-    print "wrote results to %s" % filename
+for entry in data['dga']:
+    payload = entry['data'].decode('base64')
+    filename = entry['name']
+    
+    with open(filename, 'w') as f:
+        f.write(payload)
+    
+    if f.closed:
+        print "wrote results to %s" % filename
